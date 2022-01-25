@@ -494,11 +494,11 @@ jobs:
         uses: actions/checkout@v2
       - name: Setting ENV's
         run: echo "VERSION=$(cat version.txt)" >> $GITHUB_ENV
-      - name: Accumulate files
       - name: Download job artifacts
         uses: actions/download-artifact@v2
         with:
           path: downloads
+      - name: Accumulate files
         run: |
           mkdir files
           find downloads -type f -exec cp {} files \;
