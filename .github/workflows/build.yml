@@ -190,7 +190,8 @@ jobs:
         if: matrix.platform == 'darwin'
         run: |
           cd build
-          ls
+          # TODO remove ls again
+          ls -lA
           mv statping-darwin-10.12-${{ matrix.arch }} statping
           chmod +x statping
           tar -czvf statping-darwin-${{ matrix.arch }}.tar.gz statping
