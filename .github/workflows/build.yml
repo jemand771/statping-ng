@@ -486,7 +486,7 @@ jobs:
 
   # all other release jobs should be based on this
   release-precondition-check:
-    if: env.is_release
+    if: ${{ env.is_release }}
     needs: [ build, test-postman-sqlite, test-postman-mysql, test-postman-postgres ]
     runs-on: ubuntu-latest
     steps:
