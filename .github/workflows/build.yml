@@ -510,7 +510,7 @@ jobs:
           VERSION: ${{ env.VERSION }}
         with:
           # add "dev-" prefix for unstable releases
-          tag_name: ${{ env.is_unstable && 'dev-' || '' }} v${{ env.VERSION }}
+          tag_name: ${{ env.is_unstable && 'dev-' || '' }}v${{ env.VERSION }}
           draft: true
           prerelease: true
           files: files/statping-*
