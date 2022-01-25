@@ -493,6 +493,9 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           path: downloads
+        # TODO read version somewhere *once* and use output globally
+      - name: Setting ENV's
+        run: echo "VERSION=$(cat version.txt)" >> $GITHUB_ENV
       - name: Accumulate files
         run: |
           mkdir files
