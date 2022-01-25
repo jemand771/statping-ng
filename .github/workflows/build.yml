@@ -496,7 +496,7 @@ jobs:
       - name: Accumulate files
         run: |
           mkdir files
-          find downloads -type f -exec cp {} files
+          find downloads -type f -exec cp {} files \;
       - name: Upload Releases
         id: upload-assets
         uses: softprops/action-gh-release@v1
