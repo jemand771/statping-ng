@@ -89,6 +89,8 @@ jobs:
     needs: [ frontend, test-postman-sqlite, test-postman-mysql, test-postman-postgres ]
     runs-on: ubuntu-latest
     strategy:
+      # TODO fail-fast again
+      fail-fast: false
       matrix:
         platform: [ linux ]
         arch: [ 386, amd64, arm-7, arm-6, arm64 ]
