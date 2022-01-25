@@ -494,6 +494,8 @@ jobs:
         with:
           path: downloads
         # TODO read version somewhere *once* and use output globally
+      - name: Checkout Statping Repo
+        uses: actions/checkout@v2
       - name: Setting ENV's
         run: echo "VERSION=$(cat version.txt)" >> $GITHUB_ENV
       - name: Accumulate files
