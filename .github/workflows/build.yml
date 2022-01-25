@@ -486,7 +486,12 @@ jobs:
 
   # all other release jobs should be based on this
   release-precondition-check:
-    if: ${{ env.is_release }}
+    # only run release jobs on push to stable/unstable
+    # sadly, you can't use ${{ env.is_release }} here
+    if: |
+      github.event_name == 'push'
+      && (github.ref == 'refs/heads/stable'
+      || github.ref == 'refs/heads/unstable')
     needs: [ build, test-postman-sqlite, test-postman-mysql, test-postman-postgres ]
     runs-on: ubuntu-latest
     steps:
