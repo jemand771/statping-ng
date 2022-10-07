@@ -114,7 +114,7 @@ console:
 compose-build-full: 
 	docker compose -f docker-compose.yml -f dev/docker-compose.full.yml build --parallel --build-arg VERSION=${VERSION}
 
-docker-latest: 
+docker-latest:
 	docker build -t statping-ng/statping-ng:latest --build-arg VERSION=${VERSION} .
 
 docker-test:
