@@ -89,6 +89,7 @@ jobs:
     needs: frontend
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         platform: [ linux ]
         arch: [ 386, amd64, arm-7, arm-6, arm64 ]
@@ -164,6 +165,9 @@ jobs:
           buildmode: pie
           tags: ${{ env.XGO_TAGS }}
           ldflags: -s -w -X main.VERSION=${{ env.VERSION }} -X main.COMMIT=${{ env.COMMIT }} ${{ env.BUILD_FLAGS }}
+      
+      # TODO remove
+      - run: ls -la build
 
       - name: Compress Linux Builds
         if: matrix.platform == 'linux'
