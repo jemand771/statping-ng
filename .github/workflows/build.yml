@@ -165,45 +165,12 @@ jobs:
           buildmode: pie
           tags: ${{ env.XGO_TAGS }}
           ldflags: -s -w -X main.VERSION=${{ env.VERSION }} -X main.COMMIT=${{ env.COMMIT }} ${{ env.BUILD_FLAGS }}
-      
-      # TODO remove
-      - run: ls -la build
-
-      - name: Compress Linux Builds
-        if: matrix.platform == 'linux'
-        run: |
-          cd build
-          mv statping-linux-${{ matrix.arch }} statping
-          chmod +x statping
-          tar -czvf statping-linux-${{ matrix.arch }}.tar.gz statping
-          rm -rf statping
-          echo "compressed=statping-linux-${{ matrix.arch }}.tar.gz" >> $GITHUB_ENV
-
-      - name: Compress Windows Builds
-        if: matrix.platform == 'windows'
-        run: |
-          cd build
-          mv statping-windows-4.0-${{ matrix.arch }}.exe statping.exe
-          chmod +x statping.exe
-          zip statping-windows-${{ matrix.arch }}.zip statping.exe
-          rm -rf statping.exe
-          echo "compressed=statping-windows-${{ matrix.arch }}.zip" >> $GITHUB_ENV
-
-      - name: Compress Darwin Builds
-        if: matrix.platform == 'darwin'
-        run: |
-          cd build
-          mv statping-darwin-10.12-${{ matrix.arch }} statping
-          chmod +x statping
-          tar -czvf statping-darwin-${{ matrix.arch }}.tar.gz statping
-          rm -rf statping
-          echo "compressed=statping-darwin-${{ matrix.arch }}.tar.gz" >> $GITHUB_ENV
 
       - name: Upload Compiled Statping Binary
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
-          name: statping-${{ matrix.platform }}-${{ matrix.arch }}
-          path: ./build
+          name: binaries
+          path: ./build/*
 
       - name: Upload Compiled Binaries to S3
         # temporarily disabled
