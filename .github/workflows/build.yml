@@ -39,7 +39,7 @@ jobs:
     needs: meta
     steps:
       - name: print-meta
-        run: echo ${{ toJSON(needs.meta.outputs) }}
+        run: cat << EOF ${{ toJSON(needs.meta.outputs) }} EOF
 
   frontend:
     runs-on: ubuntu-latest
