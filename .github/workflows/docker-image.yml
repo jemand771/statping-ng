@@ -15,10 +15,10 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag ${IMAGE_TAG}
+      run: docker build . --file Dockerfile --tag hello
     
     - name: Save Docker image
-      run: docker save --output image.tar ${IMAGE_TAG}
+      run: docker save --output image.tar hello
     - name: Upload Docker image
       uses: actions/upload-artifact@v3
       with:
