@@ -21,7 +21,7 @@ require (
 	github.com/sirupsen/logrus v1.6.0
 	github.com/spf13/cobra v1.0.0
 	github.com/spf13/viper v1.6.3
-	github.com/ahpanz/emails v1.0.2
+	github.com/ahpanz/emails v1.0.3
 	github.com/stretchr/testify v1.6.1
 	github.com/t-tiger/gorm-bulk-insert/v2 v2.0.1
 	golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9
